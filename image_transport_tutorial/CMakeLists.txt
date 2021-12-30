@@ -15,6 +15,12 @@ find_package(OpenCV)
 
 include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
+# add the camera stream example
+add_executable(my_camera src/my_camera.cpp)
+add_dependencies(my_camera ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
+target_link_libraries(my_camera ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+
 # add the publisher example
 add_executable(my_publisher src/my_publisher.cpp)
 add_dependencies(my_publisher ${catkin_EXPORTED_TARGETS} ${${PROJECT_NAME}_EXPORTED_TARGETS})
